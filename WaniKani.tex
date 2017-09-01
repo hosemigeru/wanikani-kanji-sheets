@@ -1,6 +1,6 @@
 \documentclass[a4paper, 10pt]{article}
 %
-% Time-stamp: <2017-09-01 23:41:06 jmf>
+% Time-stamp: <2017-09-01 23:49:54 jmf>
 %
 \usepackage{fontspec}
 %
@@ -11,13 +11,12 @@
 \setsepchar{,}
 %
 \usepackage{tikz}
-\tikzset{normal lines/.style={gray, very thin}} 
-\tikzset{margin lines/.style={gray, thick}} 
-\tikzset{mm lines/.style={gray, ultra thin}} 
-\tikzset{strong lines/.style={black, very thin}}
+\tikzset{grid lines/.style={gray, ultra thin}} 
 \tikzset{dividing lines/.style={black, thick}}
-\tikzset{master lines/.style={black, very thick}} 
-\tikzset{dashed master lines/.style={loosely dashed, black, very thick}} 
+%
+% modified from https://michaelgoerz.net/notes/printable-paper-with-latex-and-tikz.html
+%
+% the main command is \kanjisheet, which takes one argument consisting of a comma separated list of nine kanji and produces a practice sheet
 %
 \newcommand\kanjisheet[1]{%
   \readlist\kanji{#1}%
@@ -27,7 +26,7 @@
     % 
     \node at ([xshift=1cm, yshift=8.5mm] current page.south west){
       \begin{tikzpicture}[remember picture, overlay]
-        \draw[style=mm lines,step=5mm] (0,12cm) grid +(18cm,14cm); 
+        \draw[style=grid lines,step=5mm] (0,12cm) grid +(18cm,14cm); 
         \draw[style=dividing lines,step=2cm] (0,0) grid +(18cm,28cm); 
       \end{tikzpicture}
     };
