@@ -1,0 +1,103 @@
+\documentclass[a4paper, 10pt]{article}
+%
+% Time-stamp: <2017-09-01 23:41:06 jmf>
+%
+\usepackage{fontspec}
+%
+\setmainfont[Color=000000,Scale=5]{STKaiti}
+\newfontfamily\stroke[Color=333399,Scale=5]{KanjiStrokeOrders}
+%
+\usepackage{listofitems}
+\setsepchar{,}
+%
+\usepackage{tikz}
+\tikzset{normal lines/.style={gray, very thin}} 
+\tikzset{margin lines/.style={gray, thick}} 
+\tikzset{mm lines/.style={gray, ultra thin}} 
+\tikzset{strong lines/.style={black, very thin}}
+\tikzset{dividing lines/.style={black, thick}}
+\tikzset{master lines/.style={black, very thick}} 
+\tikzset{dashed master lines/.style={loosely dashed, black, very thick}} 
+%
+\newcommand\kanjisheet[1]{%
+  \readlist\kanji{#1}%
+  
+  \begin{tikzpicture}[remember picture, overlay]
+    % 
+    % 
+    \node at ([xshift=1cm, yshift=8.5mm] current page.south west){
+      \begin{tikzpicture}[remember picture, overlay]
+        \draw[style=mm lines,step=5mm] (0,12cm) grid +(18cm,14cm); 
+        \draw[style=dividing lines,step=2cm] (0,0) grid +(18cm,28cm); 
+      \end{tikzpicture}
+    };
+      \foreach \k in {1,...,9}
+      {
+        \node at ([xshift=2*\k cm, yshift=-2cm] current page.north west) {\stroke\kanji[\k]};
+        \node at ([xshift=2*\k cm, yshift=-4cm] current page.north west) {\kanji[\k]};
+      }
+      \foreach \d in {6,8,10}
+      {
+        \foreach \k in {1,...,9}
+        {
+          \node [opacity=0.1] at ([xshift=2*\k cm, yshift=-\d cm] current page.north west) {\kanji[\k]};
+        }
+      }
+  \end{tikzpicture}\clearpage
+}
+
+\begin{document}
+\pagestyle{empty}
+\kanjisheet{上,下,大,工,八,入,山,口,九}
+\kanjisheet{一,人,力,川,七,十,三,二,女}
+\kanjisheet{又,玉,本,子,丸,正,犬,夕,出}
+\kanjisheet{目,了,火,四,五,才,天,手,王}
+\kanjisheet{左,中,月,々,田,右,六,小,土}
+\kanjisheet{立,石,丁,日,刀,千,木,水,白}
+\kanjisheet{文,円,矢,市,牛,切,方,戸,太}
+\kanjisheet{父,少,友,毛,半,心,内,生,久}
+\kanjisheet{台,母,午,北,今,古,兄,元,外}
+\kanjisheet{分,公,引,止,用,万,広,冬,竹}
+\kanjisheet{車,央,写,仕,耳,早,気,平,花}
+\kanjisheet{足,世,打,百,氷,虫,字,男,主}
+\kanjisheet{名,不,号,他,去,皿,先,赤,休}
+\kanjisheet{申,見,貝,皮,代,礼,糸,町,村}
+\kanjisheet{年,角,青,体,色,来,社,図,毎}
+\kanjisheet{羽,林,行,金,草,里,作,多,肉}
+\kanjisheet{会,交,近,池,雨,米,当,走,同}
+\kanjisheet{言,自,売,形,空,音,学,光,考}
+\kanjisheet{回,谷,声,西,何,麦,弟,全,後}
+\kanjisheet{血,両,明,京,化,国,死,亡,画}
+\kanjisheet{地,東,食,直,前,有,知,活,長}
+\kanjisheet{曲,首,次,夜,姐,点,安,室,科}
+\kanjisheet{海,羊,店,南,星,州,茶,思,歩}
+\kanjisheet{向,妹,辺,付,札,鳥,黒,船,以}
+\kanjisheet{必,末,氏,失,魚,組,家,欠,未}
+\kanjisheet{紙,通,民,由,理,校,雪,強,夏}
+\kanjisheet{高,教,時,弱,週,風,記,黄,答}
+\kanjisheet{反,君,局,買,雲,楽,数,決,絵}
+\kanjisheet{住,電,森,助,馬,間,場,医,朝}
+\kanjisheet{番,所,究,道,役,研,身,者,合}
+\kanjisheet{支,話,投,対,受,事,美,予,始}
+\kanjisheet{服,度,発,定,対,談,表,客,重}
+\kanjisheet{持,負,相,要,新,部,和,県,返}
+\kanjisheet{乗,屋,送,苦,泳,仮,物,具,実}
+\kanjisheet{使,待,勝,界,進,酒,業,算,運}
+\kanjisheet{漢,鳴,集,配,飲,終,顔,落,農}
+\kanjisheet{速,頭,聞,院,調,鉄,語,葉,習}
+\kanjisheet{軽,線,最,開,親,読,転,路,病}
+\kanjisheet{横,歌,起,功,成,岸,競,争,便}
+\kanjisheet{老,命,指,初,味,追,神,良,意}
+\kanjisheet{労,好,昔,低,育,令,拾,注,利}
+\kanjisheet{位,級,仲,放,秒,別,特,共,努}
+\kanjisheet{伝,戦,波,洋,働,,,,}
+\end{document}
+
+% Local Variables:
+% mode: LaTeX
+% TeX-command-default: "XeLaTeX"
+% eval: (set-language-environment 'Japanese)
+% eval: (set-input-method 'japanese)
+% coding: utf-8
+% TeX-master: t
+% End:
